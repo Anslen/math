@@ -22,7 +22,7 @@ class Vector:
         if self.data.shape != other.data.shape:
             return False
             #维数不相等返回False
-        return (self.data == other.dada).all()
+        return (self.data == other.data).all()
         #每一项数字都相等
 
     def __ne__(self,other):
@@ -66,6 +66,9 @@ class Vector:
     def __str__(self):
         return f'Vector({self.data.__repr__()[7:-2]})'
     __repr__ = __str__
+
+    def __hash__(self):
+        return hash(tuple(self.data))
 
     def __setattr__(self, __name: str, __value) -> None:
         if self.defined == True:
